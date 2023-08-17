@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>数据库表结构说明文档</title>
+</head>
+<body>
+<div class="app">
+    <!--侧边菜单-->
+    <div class="side">
+        <div style="padding: 15px;">
+            {{range .tables}}
+            <div>{{.Title}}({{.Name}})</div>
+            {{end}}
+        </div>
+    </div>
+    <!--页面内容-->
+    <div class="content">
+        {{range .tables}}
+        <div class="item">
+            <h2>{{.Title}}({{.Name}})</h2>
+            <p>{{.Description}}</p>
+            <table class="pure-table">
+                <thead>
+                <tr>
+                    <th>字段</th>
+                    <th>类型</th>
+                    <th>描述</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{range .Fields}}
+                <tr>
+                    <td>{{.Name}}</td>
+                    <td>{{.Type}}</td>
+                    <td>{{.Comment}}</td>
+                </tr>
+                {{end}}
+                </tbody>
+            </table>
+            <div style="height: 50px;width:100%"></div>
+        </div>
+        {{end}}
+    </div>
+</div>
+<style>
+    html, body, .app, .side {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    body {
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: 1px;
+        font-family: monospace;
+    }
+
+    .app {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .side {
+        width: 280px;
+        border-right: solid 1px #eee;
+    }
+
+    .content {
+        width: calc(100% - 200px);
+    }
+
+    .item {
+        padding: 15px;
+    }
+
+    .pure-table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        empty-cells: show;
+        border: 1px solid #cbcbcb;
+    }
+
+    .pure-table caption {
+        color: #000;
+        font: italic 85%/1 arial,sans-serif;
+        padding: 1em 0;
+        text-align: center;
+    }
+
+    .pure-table td,.pure-table th {
+        border: 1px solid #cbcbcb;
+        border-width: 1px;
+        font-size: inherit;
+        margin: 0;
+        overflow: visible;
+        padding: .5em 1em;
+    }
+
+    .pure-table thead {
+        background-color: #e0e0e0;
+        color: #000;
+        text-align: left;
+        vertical-align: bottom;
+    }
+
+    .pure-table td {
+        background-color: transparent;
+    }
+</style>
+</body>
+</html>
